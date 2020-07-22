@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-comp-otp',
@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompOtpComponent implements OnInit {
 
+  @Output()
+  backEvent = new EventEmitter<boolean>();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  moveBack() {
+    const value = true;
+    this.backEvent.emit(value);
   }
 
 }

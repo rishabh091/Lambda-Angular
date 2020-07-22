@@ -41,10 +41,18 @@ export class CompSignupComponent implements OnInit {
     this.isValidated(this.user.email) &&
     this.isValidated(this.user.password)) {
       console.table(this.user);
+
+      const otp = document.getElementById('otpScreen');
+      otp.style.transform = 'translate(0%, -100%)';
     }
   }
   isValidated(value: String) {
     return value != null && !value.includes(" ") && value;
+  }
+
+  moveOTPBack() {
+    const otp = document.getElementById('otpScreen');
+      otp.style.transform = 'translate(0%, -200%)';
   }
 
 }
