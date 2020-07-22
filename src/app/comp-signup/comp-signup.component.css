@@ -11,3 +11,7 @@
     top: 0px;
     z-index: -1;
 }
+.outer {
+    width: 200%;
+    height: 100vh;
+}

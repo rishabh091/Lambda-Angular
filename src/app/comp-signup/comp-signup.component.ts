@@ -14,6 +14,9 @@ export class CompSignupComponent implements OnInit {
     password: null
   }
 
+  dataToggle: String = null;
+  dataTarget: String = null;
+
   constructor() { }
 
   ngOnInit(): void {
