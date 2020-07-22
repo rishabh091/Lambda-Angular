@@ -7,9 +7,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompSignupComponent implements OnInit {
 
+  user = {
+    name: null,
+    userName: null,
+    email: null,
+    password: null
+  }
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  enterName(event) {
+    this.user.name = event.target.value;
+  }
+  enterUsername(event) {
+    this.user.userName = event.target.value;
+  }
+  enterEmail(event) {
+    this.user.email = event.target.value;
+  }
+  enterPassword(event) {
+    this.user.password = event.target.value;
+  }
+
+  sendOTP() {
+    if(this.isValidated(this.user.name) &&
+    this.isValidated(this.user.userName) &&
+    this.isValidated(this.user.email) &&
+    this.isValidated(this.user.password)) {
+      console.table(this.user);
+    }
+  }
+  isValidated(value: String) {
+    return value != null && !value.includes(" ") && value;
   }
 
 }

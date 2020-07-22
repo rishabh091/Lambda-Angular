@@ -7,16 +7,18 @@
 
         <form method="dialog" class="width-100">
             <div class="form-group">
-                <input type="text" class="form-control input-text" placeholder="Name" required>
+                <input type="text" class="form-control input-text" placeholder="Name" (keyup)="enterName($event)" required>
 
-                <input type="text" class="form-control input-text mt-4" placeholder="Username" required>
+                <input type="text" class="form-control input-text mt-4" placeholder="Username" (keyup)="enterUsername($event)" required>
 
-                <input type="email" class="form-control input-text mt-4" placeholder="Email" required>
+                <input type="email" class="form-control input-text mt-4" placeholder="Email" (keyup)="enterEmail($event)" required>
 
-                <input type="password" class="form-control input-text mt-4" placeholder="Password" required>
+                <input type="password" class="form-control input-text mt-4" placeholder="Password" (keyup)="enterPassword($event)" required>
             </div>
 
-            <button type="submit" class="btn btn-info rounded-0 width-100 mt-5 font-weight-bold p-3 text-uppercase">
+            <button type="submit"
+             class="btn btn-info rounded-0 width-100 mt-5 font-weight-bold p-3 text-uppercase"
+             (click)="sendOTP()">
                 create  account
             </button>
         </form>
