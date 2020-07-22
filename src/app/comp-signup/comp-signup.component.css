@@ -1,0 +1,13 @@
+.heading {
+    letter-spacing: 3px;
+}
+.input-text {
+    height: 3em;
+}
+.bg-path {
+    clip-path: circle(57.6% at 25% 28%);
+    background: var(--custom-grey);
+    position: absolute;
+    top: 0px;
+    z-index: -1;
+}
