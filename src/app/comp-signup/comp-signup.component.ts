@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ServiceAuthService } from './../service-auth/service-auth.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -17,9 +18,12 @@ export class CompSignupComponent implements OnInit {
 
   disable: boolean = false;
 
-  constructor(private serviceAuth: ServiceAuthService) { }
+  constructor(private serviceAuth: ServiceAuthService, private router: Router) { }
 
   ngOnInit(): void {
+    if(this.serviceAuth.isTokenPresent()) {
+      this.router.navigate(['']);
+    }
   }
 
   enterName(event) {
@@ -40,14 +44,13 @@ export class CompSignupComponent implements OnInit {
     this.isValidated(this.user.userName) &&
     this.isValidated(this.user.email) &&
     this.isValidated(this.user.password)) {
-      console.table(this.user);
       //disbale signup button
       this.disable = true;
 
       const otp = document.getElementById('otpScreen');
       otp.style.transform = 'translate(0%, -100%)';
 
-      this.serviceAuth.sendOTP(this.user.email);
+      this.serviceAuth.sendOTP(this.user);
     }
   }
   isValidated(value: String) {

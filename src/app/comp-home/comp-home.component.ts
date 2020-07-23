@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { ServiceAuthService } from './../service-auth/service-auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompHomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private serviceAuth: ServiceAuthService, private router: Router) { }
 
   ngOnInit(): void {
+    if(!this.serviceAuth.isTokenPresent()) {
+      this.router.navigate(['/login']);
+    }
   }
 
 }

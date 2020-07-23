@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ServiceAuthService } from './../service-auth/service-auth.service';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
@@ -12,13 +13,22 @@ export class CompOtpComponent implements OnInit {
   backEvent = new EventEmitter<boolean>();
 
   otp: String;
+  user: Object;
   enteredOTP: String;
   showError: boolean = false;
+  showSpinner:boolean = false;
 
-  constructor(private serviceAuth: ServiceAuthService) { }
+  error:String = "Wrong OTP";
+
+  constructor(private serviceAuth: ServiceAuthService, private router: Router) { }
 
   ngOnInit(): void {
-    this.serviceAuth.otp.subscribe(otp => this.otp = otp);
+    this.serviceAuth.otp.subscribe(data => {
+      let object = JSON.parse(data);
+
+      this.otp = object.otp;
+      this.user = object.user;
+    });
   }
 
   moveBack() {
@@ -31,11 +41,37 @@ export class CompOtpComponent implements OnInit {
   }
 
   checkOTP() {
+    this.showSpinner = true;
+
     console.log(this.otp)
+
     if(this.enteredOTP == this.otp) {
       this.showError = false;
+      //automatic login
+      this.serviceAuth.register(this.user)
+      .then(res => {
+        this.serviceAuth.login(this.user)
+        .then((res:any) => {
+
+          //save token to localStorage
+          localStorage.setItem("token", res.token);
+
+          this.router.navigate(['']);
+        })
+        .catch(err => {
+          this.error = "Error logging try manual logging";
+          this.showError = true;
+          this.showSpinner = false;
+        })
+      })
+      .catch(err => {
+        this.error = "User already registered.";
+        this.showError = true;
+        this.showSpinner = false;
+      });
     }
     else {
+      this.showSpinner = false;
       this.showError = true;
     }
   }

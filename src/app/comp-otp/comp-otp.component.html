@@ -10,8 +10,11 @@
         <input type="number" maxlength="6" minlength="6" class="form-control text-center input"
         placeholder="Enter OTP"
         (keyup)="enterOTP($event)">
-        <div *ngIf="showError" class="text-danger text-small pt-1">Wrong OTP</div>
+        <div *ngIf="showError" class="text-danger text-small pt-1">{{ error }}</div>
 
-        <button type="button" class="btn btn-info rounded-0 width-100 p-3 mt-5" (click)="checkOTP()">Submit</button>
+        <button type="button" class="btn btn-info rounded-0 width-100 p-3 mt-5" (click)="checkOTP()">
+            <span *ngIf="showSpinner" class="spinner spinner-grow-sm spinner-grow mr-2"></span>
+            Submit
+        </button>
     </div>
 </div>
