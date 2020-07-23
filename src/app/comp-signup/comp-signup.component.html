@@ -1,4 +1,4 @@
-<div class="container-fluid height-100 pl-3 pr-3 pt-5 pb-5">
+<div class="container-fluid height-100 pl-3 pr-3 pt-5">
     <div class="container">
         <h1 class="display-5 text-uppercase heading mb-5 pb-5">
             <a href="/login"><span class="material-icons">arrow_back</span></a>
@@ -18,7 +18,8 @@
 
             <button type="submit"
              class="btn btn-info rounded-0 width-100 mt-5 font-weight-bold p-3 text-uppercase"
-             (click)="sendOTP()">
+             (click)="sendOTP()"
+             [disabled]="disable">
                 create  account
             </button>
         </form>
@@ -30,7 +31,7 @@
 </div>
 
 <div class="otp-screen" id="otpScreen">
-    <app-comp-otp (backEvent)="moveOTPBack()"></app-comp-otp>
+    <app-comp-otp (backEvent)="moveOTPBack($event)"></app-comp-otp>
 </div>
 
 <div class="container-fluid height-100 bg-path"></div>

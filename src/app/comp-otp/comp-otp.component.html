@@ -8,8 +8,10 @@
 
     <div class="form-group">
         <input type="number" maxlength="6" minlength="6" class="form-control text-center input"
-        placeholder="Enter OTP">
+        placeholder="Enter OTP"
+        (keyup)="enterOTP($event)">
+        <div *ngIf="showError" class="text-danger text-small pt-1">Wrong OTP</div>
 
-        <button type="button" class="btn btn-info rounded-0 width-100 p-3 mt-5">Submit</button>
+        <button type="button" class="btn btn-info rounded-0 width-100 p-3 mt-5" (click)="checkOTP()">Submit</button>
     </div>
 </div>

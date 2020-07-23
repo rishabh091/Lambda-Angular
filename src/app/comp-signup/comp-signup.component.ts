@@ -1,3 +1,4 @@
+import { ServiceAuthService } from './../service-auth/service-auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -14,10 +15,9 @@ export class CompSignupComponent implements OnInit {
     password: null
   }
 
-  dataToggle: String = null;
-  dataTarget: String = null;
+  disable: boolean = false;
 
-  constructor() { }
+  constructor(private serviceAuth: ServiceAuthService) { }
 
   ngOnInit(): void {
   }
@@ -41,18 +41,23 @@ export class CompSignupComponent implements OnInit {
     this.isValidated(this.user.email) &&
     this.isValidated(this.user.password)) {
       console.table(this.user);
+      //disbale signup button
+      this.disable = true;
 
       const otp = document.getElementById('otpScreen');
       otp.style.transform = 'translate(0%, -100%)';
+
+      this.serviceAuth.sendOTP(this.user.email);
     }
   }
   isValidated(value: String) {
     return value != null && !value.includes(" ") && value;
   }
 
-  moveOTPBack() {
+  moveOTPBack(event) {
     const otp = document.getElementById('otpScreen');
-      otp.style.transform = 'translate(0%, -200%)';
+    otp.style.transform = 'translate(0%, -200%)';
+    this.disable = false;
   }
 
 }
