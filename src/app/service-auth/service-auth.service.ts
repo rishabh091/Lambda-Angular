@@ -39,7 +39,7 @@ export class ServiceAuthService {
   isTokenPresent() {
     const token = localStorage.getItem('token');
 
-    if(token) {
+    if(token != null) {
       return true;
     }
     

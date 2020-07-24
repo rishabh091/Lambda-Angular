@@ -1,0 +1,40 @@
+.panel {
+    background-color: var(--custom-grey);
+    height: 10vh;
+    position: relative;
+}
+.carousel-container {
+    height: 90vh;
+}
+.btn-skip {
+    position: absolute;
+    right: 5%;
+    top: 25%;
+    font-weight: bold;
+}
+.background {
+    height: 100vh;
+    width: 100%;
+    background: var(--custom-grey);
+    clip-path: circle(50% at 18% 20%);
+    position: absolute;
+    z-index: -1;
+    top: 0px;
+}
+.background-blue {
+    height: 100vh;
+    width: 100%;
+    clip-path: circle(35.4% at 98% 89%);
+    position: absolute;
+    z-index: -1;
+    top: 0px;
+    right: 0px;
+    opacity: 0.5;
+}
+.text-size {
+    font-size: 1.2rem;
+}
+.img-fluid {
+    height: 30vh;
+    width: 30vh;
+}

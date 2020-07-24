@@ -1,3 +1,4 @@
+import { CompFirstScreenComponent } from './comp-first-screen/comp-first-screen.component';
 import { CompSignupComponent } from './comp-signup/comp-signup.component';
 import { CompLoginComponent } from './comp-login/comp-login.component';
 import { CompHomeComponent } from './comp-home/comp-home.component';
@@ -13,6 +14,9 @@ const routes: Routes = [
   },
   {
     path: 'signup', component: CompSignupComponent
+  },
+  {
+    path: 'firstscreen', component: CompFirstScreenComponent
   }
 ];
 

@@ -10,6 +10,7 @@ import { CompHomeComponent } from './comp-home/comp-home.component';
 import { CompLoginComponent } from './comp-login/comp-login.component';
 import { CompSignupComponent } from './comp-signup/comp-signup.component';
 import { CompOtpComponent } from './comp-otp/comp-otp.component';
+import { CompFirstScreenComponent } from './comp-first-screen/comp-first-screen.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CompOtpComponent } from './comp-otp/comp-otp.component';
     CompHomeComponent,
     CompLoginComponent,
     CompSignupComponent,
-    CompOtpComponent
+    CompOtpComponent,
+    CompFirstScreenComponent
   ],
   imports: [
     BrowserModule,
