@@ -41,9 +41,18 @@ export class CompUserComponent implements OnInit {
   getUser() {
     const id = location.pathname.split('/')[2];
 
+    const user = localStorage.getItem('LambdaUser');
+
+    if(user) {
+      this.user = JSON.parse(user);
+      return;
+    }
+
     this.userService.getUser(id)
     .then(res => {
       this.user = res;
+      //add user to localstorage
+      localStorage.setItem('LambdaUser', JSON.stringify(this.user));
       console.table(this.user);
     })
     .catch(err => alert(err))
