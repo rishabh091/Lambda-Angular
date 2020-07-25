@@ -1,13 +1,34 @@
 <div class="container-fluid home-size">
-    <div class="container-fluid head-div">
-        <div class="head-spacing">LAMBDA</div>
-        <div>
-            <span class="material-icons icon">near_me</span>
+    <!--call home-->
+    <div *ngIf="prevIcon == 'home'">
+        <div class="container-fluid head-div">
+            <div class="head-spacing">LAMBDA</div>
+            <div>
+                <span class="material-icons icon">near_me</span>
+            </div>
+        </div>
+        <div class="container-fluid content-div bg-info">
+            Content
         </div>
     </div>
-    <div class="container-fluid content-div bg-info">
-        Content
+
+    <!--call explore-->
+    <div *ngIf="prevIcon == 'search'">
+        <app-comp-explore></app-comp-explore>
     </div>
+
+    <!--call activity-->
+    <div *ngIf="prevIcon == 'activity'">
+        <app-comp-activity></app-comp-activity>
+    </div>
+
+    <!--call user panel-->
+    <div *ngIf="prevIcon == 'profile'">
+        <app-comp-user></app-comp-user>
+    </div>
+
+
+    <!--nav-->
     <div class="container-fluid navigation border-top">
         <div (click)="home('home')">
             <span class="material-icons icon" id="home" title="Home">home</span>

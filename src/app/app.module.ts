@@ -11,6 +11,9 @@ import { CompLoginComponent } from './comp-login/comp-login.component';
 import { CompSignupComponent } from './comp-signup/comp-signup.component';
 import { CompOtpComponent } from './comp-otp/comp-otp.component';
 import { CompFirstScreenComponent } from './comp-first-screen/comp-first-screen.component';
+import { CompActivityComponent } from './comp-activity/comp-activity.component';
+import { CompExploreComponent } from './comp-explore/comp-explore.component';
+import { CompUserComponent } from './comp-user/comp-user.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { CompFirstScreenComponent } from './comp-first-screen/comp-first-screen.
     CompLoginComponent,
     CompSignupComponent,
     CompOtpComponent,
-    CompFirstScreenComponent
+    CompFirstScreenComponent,
+    CompActivityComponent,
+    CompExploreComponent,
+    CompUserComponent
   ],
   imports: [
     BrowserModule,
