@@ -1,0 +1,16 @@
+.clickable {
+    cursor: pointer;
+}
+.pic-div {
+    width: 30%;
+}
+.follow-div {
+    width: 70%;
+    justify-content: space-around;
+}
+.follow-div > div {
+    vertical-align: middle;    
+}
+.profile-icon {
+    height: 100px;
+}
