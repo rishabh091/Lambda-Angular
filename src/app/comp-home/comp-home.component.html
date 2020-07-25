@@ -1,46 +1,15 @@
 <div class="container-fluid home-size">
-    <!--call home-->
-    <div *ngIf="prevIcon == 'home'">
-        <div class="container-fluid head-div">
-            <div class="head-spacing">LAMBDA</div>
-            <div>
-                <span class="material-icons icon">near_me</span>
-            </div>
-        </div>
-        <div class="container-fluid content-div bg-info">
-            Content
+   <div>
+    <div class="container-fluid head-div">
+        <div class="head-spacing">LAMBDA</div>
+        <div>
+            <span class="material-icons icon">near_me</span>
         </div>
     </div>
-
-    <!--call explore-->
-    <div *ngIf="prevIcon == 'search'">
-        <app-comp-explore></app-comp-explore>
+    <div class="container-fluid content-div bg-info">
+        Content
     </div>
-
-    <!--call activity-->
-    <div *ngIf="prevIcon == 'activity'">
-        <app-comp-activity></app-comp-activity>
-    </div>
-
-    <!--call user panel-->
-    <div *ngIf="prevIcon == 'profile'">
-        <app-comp-user></app-comp-user>
-    </div>
-
-
-    <!--nav-->
-    <div class="container-fluid navigation border-top">
-        <div (click)="home('home')">
-            <span class="material-icons icon" id="home" title="Home">home</span>
-        </div>
-        <div (click)="search('search')">
-            <span class="material-icons icon" id="search" title="Search">search</span>
-        </div>
-        <div (click)="activity('activity')">
-            <span class="material-icons icon" id="activity" title="Activity">local_activity</span>
-        </div>
-        <div (click)="profile('profile')">
-            <span class="material-icons icon" id="profile" title="Profile">face</span>
-        </div>
-    </div>
+   </div>
 </div>
+
+<app-comp-navbar></app-comp-navbar>

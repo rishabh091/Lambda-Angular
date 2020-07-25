@@ -1,3 +1,6 @@
+import { CompUserComponent } from './comp-user/comp-user.component';
+import { CompActivityComponent } from './comp-activity/comp-activity.component';
+import { CompExploreComponent } from './comp-explore/comp-explore.component';
 import { CompFirstScreenComponent } from './comp-first-screen/comp-first-screen.component';
 import { CompSignupComponent } from './comp-signup/comp-signup.component';
 import { CompLoginComponent } from './comp-login/comp-login.component';
@@ -17,6 +20,15 @@ const routes: Routes = [
   },
   {
     path: 'firstscreen', component: CompFirstScreenComponent
+  },
+  {
+    path: 'search', component: CompExploreComponent
+  },
+  {
+    path: 'activity', component: CompActivityComponent
+  },
+  {
+    path: 'profile/:id', component: CompUserComponent
   }
 ];
 

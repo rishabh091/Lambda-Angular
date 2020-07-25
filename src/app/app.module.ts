@@ -14,6 +14,7 @@ import { CompFirstScreenComponent } from './comp-first-screen/comp-first-screen.
 import { CompActivityComponent } from './comp-activity/comp-activity.component';
 import { CompExploreComponent } from './comp-explore/comp-explore.component';
 import { CompUserComponent } from './comp-user/comp-user.component';
+import { CompNavbarComponent } from './comp-navbar/comp-navbar.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CompUserComponent } from './comp-user/comp-user.component';
     CompFirstScreenComponent,
     CompActivityComponent,
     CompExploreComponent,
-    CompUserComponent
+    CompUserComponent,
+    CompNavbarComponent
   ],
   imports: [
     BrowserModule,
