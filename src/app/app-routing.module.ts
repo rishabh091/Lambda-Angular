@@ -9,27 +9,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  {
-    path: '', component: CompHomeComponent
-  },
-  {
-    path: 'login', component: CompLoginComponent
-  },
-  {
-    path: 'signup', component: CompSignupComponent
-  },
-  {
-    path: 'firstscreen', component: CompFirstScreenComponent
-  },
-  {
-    path: 'search', component: CompExploreComponent
-  },
-  {
-    path: 'activity', component: CompActivityComponent
-  },
-  {
-    path: 'profile/:id', component: CompUserComponent
-  }
+  { path: '', component: CompHomeComponent },
+  { path: 'login', component: CompLoginComponent },
+  { path: 'signup', component: CompSignupComponent },
+  { path: 'firstscreen', component: CompFirstScreenComponent },
+  { path: 'search', component: CompExploreComponent },
+  { path: 'activity', component: CompActivityComponent },
+  { path: 'profile/:id', component: CompUserComponent }
 ];
 
 @NgModule({
