@@ -37,7 +37,7 @@ export class ServiceAuthService {
   }
 
   isTokenPresent() {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('LambdaToken');
 
     if(token != null) {
       return true;

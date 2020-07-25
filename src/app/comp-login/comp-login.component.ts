@@ -51,7 +51,7 @@ export class CompLoginComponent implements OnInit {
       .then((res:any) => {
         
         //save token to localStorage
-        localStorage.setItem("token", res.token);
+        localStorage.setItem("LambdaToken", res.token);
 
         this.showError = false;
         this.showSpinner = false;

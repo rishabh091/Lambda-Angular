@@ -54,7 +54,7 @@ export class CompOtpComponent implements OnInit {
         .then((res:any) => {
 
           //save token to localStorage
-          localStorage.setItem("token", res.token);
+          localStorage.setItem("LambdaToken", res.token);
 
           this.router.navigate(['']);
         })

@@ -9,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompHomeComponent implements OnInit {
 
+  prevIcon: string = null;
+
   constructor(private serviceAuth: ServiceAuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.navigation();
+    this.alterIcon('home');
   }
 
   navigation() {
@@ -26,6 +29,30 @@ export class CompHomeComponent implements OnInit {
       this.router.navigate(['/firstscreen']);
       return;
     }
+  }
+
+  home(id) {
+    this.alterIcon(id);
+  }
+  
+  search(id) {
+    this.alterIcon(id);
+  }
+
+  activity(id) {
+    this.alterIcon(id);
+  }
+
+  profile(id) {
+    this.alterIcon(id);
+  }
+  alterIcon(id) {
+    if(this.prevIcon) {
+      document.getElementById(this.prevIcon).style.color = '#333333';
+    }
+
+    document.getElementById(id).style.color = 'black';
+    this.prevIcon = id;
   }
 
 }

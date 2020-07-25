@@ -1,0 +1,48 @@
+.home-size {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+
+    padding: 0px;
+}
+
+.navigation {
+    height: 8vh;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    z-index: 10;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    background: var(--custom-grey);
+}
+
+.icon {
+    font-size: 2rem;
+    color: #333333;
+    cursor: pointer;
+}
+
+.content-div {
+    height: 84vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.head-div {
+    height: 8vh;
+    width: 100%;
+    position: relative;
+    top: 0px;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--custom-grey);
+}
+.head-spacing {
+    letter-spacing: 2px;
+}
