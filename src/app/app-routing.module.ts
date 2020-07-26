@@ -1,3 +1,4 @@
+import { CompEditProfileComponent } from './comp-edit-profile/comp-edit-profile.component';
 import { CompUserComponent } from './comp-user/comp-user.component';
 import { CompActivityComponent } from './comp-activity/comp-activity.component';
 import { CompExploreComponent } from './comp-explore/comp-explore.component';
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'firstscreen', component: CompFirstScreenComponent },
   { path: 'search', component: CompExploreComponent },
   { path: 'activity', component: CompActivityComponent },
-  { path: 'profile/:id', component: CompUserComponent }
+  { path: 'profile/:id', component: CompUserComponent },
+  { path: 'editProfile', component: CompEditProfileComponent }
 ];
 
 @NgModule({

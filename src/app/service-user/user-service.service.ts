@@ -21,4 +21,14 @@ export class UserServiceService {
 
     return this.httpClient.get(url, {headers}).toPromise();
   }
+
+  update(user) {
+    const url = 'https://lambda-dev-community.herokuapp.com/updateProfile';
+
+    const headers = new HttpHeaders({
+      "LambdaToken": localStorage.getItem('LambdaToken')
+    })
+
+    return this.httpClient.post(url, user, {headers}).toPromise();
+  }
 }

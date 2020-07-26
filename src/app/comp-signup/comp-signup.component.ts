@@ -40,8 +40,7 @@ export class CompSignupComponent implements OnInit {
   }
 
   sendOTP() {
-    if(this.isValidated(this.user.name) &&
-    this.isValidated(this.user.userName) &&
+    if(this.isValidated(this.user.userName) &&
     this.isValidated(this.user.email) &&
     this.isValidated(this.user.password)) {
       //disbale signup button

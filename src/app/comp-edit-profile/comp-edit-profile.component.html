@@ -1,0 +1,39 @@
+<div class="container-fluid bg-light">
+    <div class="pt-4 pb-3 font-weight-bold text-large">
+        <a href="/profile/0" style="vertical-align: middle;">
+            <span class="material-icons mr-3">arrow_back</span>
+        </a>
+        Edit Profile
+        <hr>
+    </div>
+
+    <div class="form-group">
+        <form method="dialog">
+            <input type="text" placeholder="Name" class="form-control" [value]="user.name" 
+            (keyup)="enterName($event)" required>
+
+            <input type="text" placeholder="Username" class="form-control mt-4" 
+            [value]="user.userName" (keyup)="enterUserName($event)" required>
+
+            <textarea class="form-control mt-4" placeholder="Bio" rows="5" 
+            [value]="user.bio" (keyup)="enterBio($event)" maxlength="255"></textarea>
+
+            <select class="form-control mt-4" style="width: 40%;" (change)="enterGender($event)">
+                <option value="Male" 
+                [selected]="user.gender == 'Male'">Male</option>
+                <option value="Female" 
+                [selected]="user.gender == 'Female'">Female</option>
+                <option value="Other" 
+                [selected]="user.gender == 'Other'">Other</option>
+            </select>
+
+            <button type="submit" class="btn btn-info width-100 rounded-0 mt-5" (click)="update()">
+                <span *ngIf="showSpinner" class="spinner spinner-grow-sm spinner-grow mr-2"></span>
+                Save Changes
+            </button>
+        </form>
+
+        <input type="email" class="form-control mt-5" placeholder="Email" [value]="user.email" disabled>
+        <a href="#" class="btn btn-info rounded-0 mt-4">Change Email</a>
+    </div>
+</div>
