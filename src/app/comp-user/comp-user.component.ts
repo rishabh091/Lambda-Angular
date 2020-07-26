@@ -58,4 +58,8 @@ export class CompUserComponent implements OnInit {
     .catch(err => alert(err))
   }
 
+  logout() {
+    this.serviceAuth.logout();
+  }
+
 }

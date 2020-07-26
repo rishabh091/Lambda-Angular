@@ -45,4 +45,9 @@ export class ServiceAuthService {
     
     return false;
   }
+
+  logout() {
+    localStorage.removeItem("LambdaToken");
+    location.reload();
+  }
 }
