@@ -31,4 +31,30 @@ export class UserServiceService {
 
     return this.httpClient.post(url, user, {headers}).toPromise();
   }
+
+  updateEmail(email, id) {
+    const url = 'https://lambda-dev-community.herokuapp.com/updateEmail?email=' + email + "&id=" + id;
+    console.log(url);
+
+    const headers = new HttpHeaders({
+      "LambdaToken": localStorage.getItem('LambdaToken')
+    })
+
+    return this.httpClient.get(url, {headers}).toPromise();
+  }
+
+  updatePassword(password) {
+    const url = 'https://lambda-dev-community.herokuapp.com/updatePassword';
+
+    const headers = new HttpHeaders({
+      "LambdaToken": localStorage.getItem('LambdaToken')
+    })
+
+    const data = {
+      _id: JSON.parse(localStorage.getItem('LambdaUser'))._id,
+      password: password
+    }
+
+    return this.httpClient.post(url, data, {headers}).toPromise();
+  }
 }

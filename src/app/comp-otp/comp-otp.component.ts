@@ -13,7 +13,7 @@ export class CompOtpComponent implements OnInit {
   backEvent = new EventEmitter<boolean>();
 
   otp: String;
-  user: Object;
+  user: any;
   enteredOTP: String;
   showError: boolean = false;
   showSpinner:boolean = false;
@@ -55,6 +55,7 @@ export class CompOtpComponent implements OnInit {
 
           //save token to localStorage
           localStorage.setItem("LambdaToken", res.token);
+          localStorage.setItem("LambdaEmail", this.user.email);
 
           this.router.navigate(['']);
         })

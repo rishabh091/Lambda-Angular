@@ -1,4 +1,4 @@
-<div class="container-fluid bg-light">
+<div class="container-fluid bg-light pb-4">
     <div class="pt-4 pb-3 font-weight-bold text-large">
         <a href="/profile/0" style="vertical-align: middle;">
             <span class="material-icons mr-3">arrow_back</span>
@@ -19,6 +19,9 @@
             [value]="user.bio" (keyup)="enterBio($event)" maxlength="255"></textarea>
 
             <select class="form-control mt-4" style="width: 40%;" (change)="enterGender($event)">
+                <option value="null" [selected]="user.gender == null">
+                    --
+                </option>
                 <option value="Male" 
                 [selected]="user.gender == 'Male'">Male</option>
                 <option value="Female" 
@@ -31,9 +34,62 @@
                 <span *ngIf="showSpinner" class="spinner spinner-grow-sm spinner-grow mr-2"></span>
                 Save Changes
             </button>
+            <div *ngIf="profileError" class="text-small text-danger font-weight-bold">{{ profileErrorMessage }}</div>
         </form>
 
-        <input type="email" class="form-control mt-5" placeholder="Email" [value]="user.email" disabled>
-        <a href="#" class="btn btn-info rounded-0 mt-4">Change Email</a>
+        <form method="dialog">
+            <input type="email" class="form-control mt-5" placeholder="Email" 
+            [value]="user.email" (keyup)="enterEmail($event)" required>
+            <button type="submit" class="btn btn-info rounded-0 mt-4"
+            data-toggle="modal" data-target="#myModal" (click)="sendOTP()">
+                Change Email
+            </button>
+            <div *ngIf="emailError" class="font-weight-bold text-danger text-small mt-2">
+                {{ emailErrorMessage }}
+            </div>
+        </form>
+
+        <form method="dialog">
+            <input type="password" class="form-control mt-5" placeholder="Password" 
+            [value]="'password'" (keyup)="enterPassword($event)" required>
+            <button type="submit" class="btn btn-info rounded-0 mt-4" (click)="changePassword()">
+                Change Password
+            </button>
+            <div *ngIf="passwordError" class="font-weight-bold text-danger text-small mt-2">
+                Error in updating password
+            </div>
+        </form>
     </div>
 </div>
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">OTP Verification</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body center-pos">
+            <div>
+                <input type="text" placeholder="--" class="text-center form-control" (keyup)="enterOTP($event)">
+                <div *ngIf="otpError" class="text-small text-danger font-weight-bold mt-2">
+                    Incorrect OTP
+                </div>
+            </div>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger rounded-0" (click)="saveEmail()">
+              Save Changes
+            </button>
+        </div>
+  
+      </div>
+    </div>
+  </div>

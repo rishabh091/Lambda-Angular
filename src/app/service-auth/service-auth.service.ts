@@ -48,6 +48,8 @@ export class ServiceAuthService {
 
   logout() {
     localStorage.removeItem("LambdaToken");
+    localStorage.removeItem("LambdaUser");
+    localStorage.removeItem("LambdaEmail");
     location.reload();
   }
 }
