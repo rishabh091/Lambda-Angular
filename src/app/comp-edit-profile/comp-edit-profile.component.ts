@@ -15,8 +15,6 @@ export class CompEditProfileComponent implements OnInit {
   password: string;
 
   showSpinner: boolean = false;
-  emailErrorMessage: string = 'Invalid Email';
-  emailError: boolean = false;
 
   passwordError: boolean = false;
 
@@ -116,8 +114,6 @@ export class CompEditProfileComponent implements OnInit {
     this.otpError = false;
     
     if(this.fetchedOTP == this.otp) {
-      this.emailError = false;
-      this.emailErrorMessage = 'Invalid Email';
 
       if(this.isValidated(this.email) && this.email.includes('@')) {
         this.userService.updateEmail(this.email, this.user._id)
@@ -127,12 +123,10 @@ export class CompEditProfileComponent implements OnInit {
           this.serviceAuth.logout();
         }, err => {
           console.log(err);
-          this.emailError = true;
-          this.emailErrorMessage = 'Email already in use';
         })
       }
       else {
-        this.emailError = true;
+        this.otpError = true;
       }
     }
     else {
