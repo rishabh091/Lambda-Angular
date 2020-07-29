@@ -17,6 +17,13 @@ import { CompUserComponent } from './comp-user/comp-user.component';
 import { CompNavbarComponent } from './comp-navbar/comp-navbar.component';
 import { CompEditProfileComponent } from './comp-edit-profile/comp-edit-profile.component';
 
+import { AngularFireModule } from "@angular/fire";
+import {
+  AngularFireStorageModule,
+  AngularFireStorageReference,
+  AngularFireUploadTask
+} from "@angular/fire/storage";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +42,8 @@ import { CompEditProfileComponent } from './comp-edit-profile/comp-edit-profile.
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
