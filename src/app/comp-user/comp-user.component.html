@@ -72,7 +72,8 @@
         <form>
           <label for="profileUpload">Select from Device</label>
           <input type="file" placeholder="Upload From Device" class="form-control border-0" 
-          accept="image/*" id="profileUpload">
+          accept="image/*" id="profileUpload" autocomplete="off"
+          (change)="selectPic($event)">
         </form>
       </div>
 
