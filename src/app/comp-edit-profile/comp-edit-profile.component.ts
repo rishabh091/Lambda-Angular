@@ -166,7 +166,7 @@ export class CompEditProfileComponent implements OnInit {
     .then((result) => {
       //give message
       this.uploadMessage = 'Upload Completed !!';
-      location.reload()
+      location.reload();
     })
     .catch(err => {
       this.uploadMessage = 'Error in uploading Image';
