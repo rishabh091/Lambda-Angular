@@ -13,7 +13,8 @@ export class CompSignupComponent implements OnInit {
     name: null,
     userName: null,
     email: null,
-    password: null
+    password: null,
+    profilePicture: '../../assets/app-icons/profile.svg'
   }
 
   disable: boolean = false;

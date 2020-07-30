@@ -7,6 +7,13 @@
         <hr>
     </div>
 
+    <div class="center-pos pb-4">
+        <img [src]="user.profilePicture"
+             class="profile-icon img-fluid rounded-circle clickable"
+             alt="user profile"
+             data-toggle="modal" data-target="#uploadPic">
+    </div>
+
     <div class="form-group">
         <form method="dialog">
             <input type="text" placeholder="Name" class="form-control" [value]="user.name" 
@@ -85,6 +92,29 @@
             <button type="button" class="btn btn-danger rounded-0" (click)="saveEmail()">
               Save Changes
             </button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+
+<!--Upload Columns-->
+<div class="modal fade" id="uploadPic">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="p-4 border-bottom font-weight-bold clickable">
+          Take a photo
+        </div>
+  
+        <div class="p-4 border-bottom font-weight-bold clickable">
+          <form>
+            <label for="profileUpload">Select from Device</label>
+            <input type="file" placeholder="Upload From Device" class="form-control border-0" 
+            accept="image/*" id="profileUpload" autocomplete="off"
+            (change)="selectPic($event)">
+            <div *ngIf="uploadCondition" class="text-info font-weight-bold text-small pt-3">{{ uploadMessage }}</div>
+          </form>
         </div>
   
       </div>

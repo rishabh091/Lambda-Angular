@@ -27,10 +27,9 @@
     <div class="d-flex">
         <!--image-->
         <div class="pic-div">
-            <img src="../../assets/app-icons/profile.svg"
+            <img [src]="user.profilePicture"
              class="profile-icon img-fluid rounded-circle clickable"
-             alt="user profile"
-             data-toggle="modal" data-target="#myModal">
+             alt="user profile">
         </div>
         <!--follow followers-->
         <div class="follow-div d-flex pt-2">
@@ -59,24 +58,3 @@
 </div>
 
 <app-comp-navbar class="position-fixed" style="bottom: 0px;"></app-comp-navbar>
-
-<!--Upload Columns-->
-<div class="modal fade" id="myModal">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="p-4 border-bottom font-weight-bold clickable">
-        Take a photo
-      </div>
-
-      <div class="p-4 border-bottom font-weight-bold clickable">
-        <form>
-          <label for="profileUpload">Select from Device</label>
-          <input type="file" placeholder="Upload From Device" class="form-control border-0" 
-          accept="image/*" id="profileUpload" autocomplete="off"
-          (change)="selectPic($event)">
-        </form>
-      </div>
-
-    </div>
-  </div>
-</div>

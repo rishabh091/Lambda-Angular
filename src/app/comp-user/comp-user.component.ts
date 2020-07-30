@@ -2,8 +2,6 @@ import { Router } from '@angular/router';
 import { ServiceAuthService } from './../service-auth/service-auth.service';
 import { UserServiceService } from './../service-user/user-service.service';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-comp-user',
@@ -14,15 +12,9 @@ export class CompUserComponent implements OnInit {
 
   user: any = {};
 
-  title = 'cloudStorage';
-  selectedFile: File = null;
-  fb;
-  downloadURL: Observable<string>;
-
   constructor(private userService: UserServiceService,
      private serviceAuth: ServiceAuthService,
-     private router: Router,
-     private storage: AngularFireStorage) { }
+     private router: Router) { }
 
   ngOnInit(): void {
     this.navigation();
@@ -68,21 +60,6 @@ export class CompUserComponent implements OnInit {
 
   logout() {
     this.serviceAuth.logout();
-  }
-
-  selectPic(event) {
-    const date = Date.now();
-    const image = event.target.files[0];
-    const filePath = '/profile pictures/' + this.user.email + date;
-    const fileRef = this.storage.ref(filePath);
-
-    const task = fileRef.put(image)
-    .then((result) => {
-      console.log(result);
-    })
-    .catch(err => {
-      console.log(err);
-    })
   }
 
 }

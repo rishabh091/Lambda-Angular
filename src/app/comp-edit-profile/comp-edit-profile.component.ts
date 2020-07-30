@@ -1,3 +1,4 @@
+import { AngularFireStorage } from '@angular/fire/storage';
 import { UserServiceService } from './../service-user/user-service.service';
 import { Router } from '@angular/router';
 import { ServiceAuthService } from './../service-auth/service-auth.service';
@@ -26,9 +27,13 @@ export class CompEditProfileComponent implements OnInit {
   otp: string;
   fetchedOTP: string;
 
+  uploadMessage: string = 'Uploading';
+  uploadCondition: boolean = false;
+
   constructor(private serviceAuth: ServiceAuthService,
     private router: Router,
-    private userService: UserServiceService) { }
+    private userService: UserServiceService,
+    private storage: AngularFireStorage) { }
 
   ngOnInit(): void {
     this.navigation();
@@ -148,6 +153,39 @@ export class CompEditProfileComponent implements OnInit {
         this.passwordError = true;
       })
     }
+  }
+
+  async selectPic(event) {
+    this.uploadCondition = true;
+
+    const image = event.target.files[0];
+    const filePath = '/profile pictures/' + this.user.email;
+    const fileRef = this.storage.ref(filePath);
+
+    fileRef.put(image)
+    .then((result) => {
+      //give message
+      this.uploadMessage = 'Upload Completed !!';
+      location.reload()
+    })
+    .catch(err => {
+      this.uploadMessage = 'Error in uploading Image';
+      console.log(err);
+    })
+
+    let user = JSON.parse(localStorage.getItem('LambdaUser'));
+    await fileRef.getDownloadURL().toPromise()
+    .then(response => {
+      console.log(response);
+      user.profilePicture = response;
+    })
+
+    this.userService.update(user)
+    .then(res => {
+      localStorage.setItem('LambdaUser', JSON.stringify(user));
+      console.table(user);
+    })
+    .catch(err => console.log(err))
   }
 
 }
