@@ -1,2 +1,53 @@
-<p>comp-explore works!</p>
+<div class="container-fluid bg-light pt-4 pb-4 border-bottom shadow">
+    <div class="form-group">
+        <input type="text" placeholder="Search.." class="form-control mb-3">
+    </div>
+
+    <div class="d-flex justify-content-center" style="flex-wrap: wrap;">
+        <div>
+            <span class="badge badge-pill badge-success p-2 m-2 clickable" 
+            id="posts" (click)="selectCat('posts')">POSTS</span>
+        </div>
+
+        <div>
+            <span class="badge badge-pill badge-secondary p-2 m-2 clickable" 
+            id="people" (click)="selectCat('people')">PEOPLE</span>
+        </div>
+        
+        <div>
+            <span class="badge badge-pill badge-secondary p-2 m-2 clickable" 
+            id="questions" (click)="selectCat('questions')">QUESTIONS</span>
+        </div>
+        
+        <div>
+            <span class="badge badge-pill badge-secondary p-2 m-2 clickable" 
+            id="projects" (click)="selectCat('projects')">PROJECTS</span>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="currentCat == 'posts'" class="container-fluid pt-4 d-flex mb-5 pb-3 justify-content-center" style="flex-wrap: wrap;">
+    <div *ngFor="let post of posts;">
+        <div class="border post-size"></div>
+    </div>
+</div>
+
+<div *ngIf="currentCat == 'people'" class="container-fluid pt-4 mb-5 pb-3">
+    <div *ngFor="let person of people;">
+        <div class="border-bottom p-4">{{ person }}</div>
+    </div>
+</div>
+
+<div *ngIf="currentCat == 'questions'" class="container-fluid pt-4 mb-5 pb-3">
+    <div *ngFor="let question of questions;">
+        <div class="border-bottom p-4">{{ question }}</div>
+    </div>
+</div>
+
+<div *ngIf="currentCat == 'projects'" class="container-fluid pt-4 mb-5 pb-3">
+    <div *ngFor="let project of projects;">
+        <div class="border project-size">{{ project }}</div>
+    </div>
+</div>
+
 <app-comp-navbar></app-comp-navbar>
