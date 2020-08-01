@@ -1,3 +1,4 @@
+import { ServiceSearchService } from './../service-search/service-search.service';
 import { Router } from '@angular/router';
 import { ServiceAuthService } from './../service-auth/service-auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -13,14 +14,16 @@ export class CompExploreComponent implements OnInit {
   currentCat: string = 'posts';
 
   posts: Array<any> = [1,2,3,4,5,6,7,8,9,10,11,12,3,4,5,1,2,3,4,5,6,7];
-  people: Array<any> = [1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,8,9,1,2,3,4,5];
+  people: Array<any> = [];
   questions: Array<any> = [1,2,3,4,5,6,7,8,9,10,11,12,3,4,5,1,2,3,4,5,6,7];
   projects: Array<any> = [1,2,3,4,5,6,7,8,8,1,1,1,1,1,1,1];
 
   search: string;
   searchTimeout: any = null;
 
-  constructor(private serviceAuth: ServiceAuthService, private router: Router) { }
+  constructor(private serviceAuth: ServiceAuthService,
+    private router: Router,
+    private serviceSearch: ServiceSearchService) { }
 
   ngOnInit(): void {
     this.navigation();
@@ -61,8 +64,21 @@ export class CompExploreComponent implements OnInit {
 
     this.searchTimeout = setTimeout(() => {
       //send search
-      console.log(this.search);
+      //if user is selected run user
+      this.serviceSearch.searchUser(this.search)
+      .then((res: any) => {
+        this.people = res;
+      })
+      .catch(err => {
+        console.log(err);
+        alert('Problem occured while searching user');
+      })
+
     }, 1000)
+  }
+
+  getUserDetails(email) {
+    this.router.navigate(['/profile/' + email]);
   }
 
 }

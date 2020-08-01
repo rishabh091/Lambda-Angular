@@ -36,8 +36,23 @@
 
 <!--People area-->
 <div *ngIf="currentCat == 'people'" class="container-fluid pt-4 mb-5 pb-3">
+
+    <!--if user is empty-->
+    <div *ngIf="people.length == 0" class="mt-5">
+        <div class="text-center text-muted">SNAP !! No User Found !!</div>
+    </div>
+
     <div *ngFor="let person of people;">
-        <div class="border-bottom p-4">{{ person }}</div>
+        <div class="border-bottom p-4 d-flex clickable" (click)="getUserDetails(person.email)">
+            <div>
+                <img [src]="person.profilePicture" class="img-fluid user-img-size rounded-circle" alt="user profile">
+            </div>
+
+            <div class="ml-4">
+                <div class="font-weight-bold">{{ person.userName }}</div>
+                <div class="text-small">{{ person.name }}</div>
+            </div>
+        </div>
     </div>
 </div>
 

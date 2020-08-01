@@ -9,3 +9,8 @@
     height: 30vh;
     width: 100%;
 }
+.user-img-size {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+}
