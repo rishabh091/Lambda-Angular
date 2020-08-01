@@ -1,6 +1,7 @@
 <div class="container-fluid bg-light pt-4 pb-4 border-bottom shadow">
     <div class="form-group">
-        <input type="text" placeholder="Search.." class="form-control mb-3">
+        <input type="text" placeholder="Search.." class="form-control mb-3"
+        (keyup)="enterSearch($event)">
     </div>
 
     <div class="d-flex justify-content-center" style="flex-wrap: wrap;">
@@ -26,24 +27,28 @@
     </div>
 </div>
 
+<!--Posts area-->
 <div *ngIf="currentCat == 'posts'" class="container-fluid pt-4 d-flex mb-5 pb-3 justify-content-center" style="flex-wrap: wrap;">
     <div *ngFor="let post of posts;">
         <div class="border post-size"></div>
     </div>
 </div>
 
+<!--People area-->
 <div *ngIf="currentCat == 'people'" class="container-fluid pt-4 mb-5 pb-3">
     <div *ngFor="let person of people;">
         <div class="border-bottom p-4">{{ person }}</div>
     </div>
 </div>
 
+<!--Questions area-->
 <div *ngIf="currentCat == 'questions'" class="container-fluid pt-4 mb-5 pb-3">
     <div *ngFor="let question of questions;">
         <div class="border-bottom p-4">{{ question }}</div>
     </div>
 </div>
 
+<!--Projects area-->
 <div *ngIf="currentCat == 'projects'" class="container-fluid pt-4 mb-5 pb-3">
     <div *ngFor="let project of projects;">
         <div class="border project-size">{{ project }}</div>

@@ -9,13 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompExploreComponent implements OnInit {
 
-  previousCat = null;
-  currentCat = 'posts';
+  previousCat: string = null;
+  currentCat: string = 'posts';
 
-  posts = [1,2,3,4,5,6,7,8,9,10,11,12,3,4,5,1,2,3,4,5,6,7];
-  people = [1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,8,9,1,2,3,4,5];
-  questions = [1,2,3,4,5,6,7,8,9,10,11,12,3,4,5,1,2,3,4,5,6,7];
-  projects = [1,2,3,4,5,6,7,8,8,1,1,1,1,1,1,1];
+  posts: Array<any> = [1,2,3,4,5,6,7,8,9,10,11,12,3,4,5,1,2,3,4,5,6,7];
+  people: Array<any> = [1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,8,9,1,2,3,4,5];
+  questions: Array<any> = [1,2,3,4,5,6,7,8,9,10,11,12,3,4,5,1,2,3,4,5,6,7];
+  projects: Array<any> = [1,2,3,4,5,6,7,8,8,1,1,1,1,1,1,1];
+
+  search: string;
+  searchTimeout: any = null;
 
   constructor(private serviceAuth: ServiceAuthService, private router: Router) { }
 
@@ -47,6 +50,19 @@ export class CompExploreComponent implements OnInit {
     const current = document.getElementById(this.currentCat);
     current.classList.remove('badge-secondary');
     current.classList.add('badge-success');
+  }
+
+  enterSearch(event) {
+    this.search = event.target.value;
+
+    if(this.searchTimeout) {
+      clearTimeout(this.searchTimeout);
+    }
+
+    this.searchTimeout = setTimeout(() => {
+      //send search
+      console.log(this.search);
+    }, 1000)
   }
 
 }
