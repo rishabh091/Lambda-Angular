@@ -43,7 +43,7 @@
     </div>
 
     <div *ngFor="let person of people;">
-        <div class="border-bottom p-4 d-flex clickable" (click)="getUserDetails(person.email)">
+        <div class="border-bottom p-4 d-flex clickable" (click)="getUserDetails(person._id)">
             <div>
                 <img [src]="person.profilePicture" class="img-fluid user-img-size rounded-circle" alt="user profile">
             </div>

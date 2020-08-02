@@ -57,6 +57,10 @@ export class CompEditProfileComponent implements OnInit {
     }
   }
 
+  getBack() {
+    history.go(-1);
+  }
+
   enterName(event) {
     this.user.name = event.target.value;
   }

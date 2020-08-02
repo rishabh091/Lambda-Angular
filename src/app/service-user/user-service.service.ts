@@ -8,16 +8,21 @@ export class UserServiceService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getUser(email) {
-    if(email == 0) {
-      email = localStorage.getItem('LambdaEmail');
-    }
-
-    const url = 'https://lambda-dev-community.herokuapp.com/getProfile?email=' + email;
-
+  getUser(key) {
     const headers = new HttpHeaders({
       "LambdaToken" : localStorage.getItem('LambdaToken')
     });
+
+    if(key == 0) {
+      key = localStorage.getItem('LambdaEmail');
+
+      const url = 'https://lambda-dev-community.herokuapp.com/getProfile?email=' + key;
+
+      return this.httpClient.get(url, {headers}).toPromise();
+    }
+
+    //else get user by id
+    const url = 'https://lambda-dev-community.herokuapp.com/getUser?id=' + key;
 
     return this.httpClient.get(url, {headers}).toPromise();
   }

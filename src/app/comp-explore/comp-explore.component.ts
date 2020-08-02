@@ -77,8 +77,8 @@ export class CompExploreComponent implements OnInit {
     }, 1000)
   }
 
-  getUserDetails(email) {
-    this.router.navigate(['/profile/' + email]);
+  getUserDetails(id) {
+    this.router.navigate(['/profile/' + id]);
   }
 
 }
